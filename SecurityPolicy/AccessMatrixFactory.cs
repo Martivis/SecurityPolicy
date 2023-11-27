@@ -2,7 +2,7 @@
 
 namespace SecurityPolicy;
 
-public class AccessMatrixFactory
+public class AccessMatrixFactory : IAccessMatrixFactory
 {
     private User _admin;
     private List<User> _users;

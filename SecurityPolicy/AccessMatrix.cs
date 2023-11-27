@@ -35,4 +35,9 @@ public class AccessMatrix : IAccessMatrix
     {
         return _rights[(user, file)].HasFlag(right);
     }
+
+    public Right GetUserRights(User user, AccessFile file)
+    {
+        return _rights[(user, file)];
+    }
 }

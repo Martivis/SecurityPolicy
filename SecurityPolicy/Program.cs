@@ -1,20 +1,18 @@
 ﻿
 using SecurityPolicy;
-
-User admin = new()
-{
-    Id = 100,
-    Name = "Lesly"
-};
+using SecurityPolicy.UI;
 
 List<User> users = new()
 {
+    new User() {Id = 100, Name = "Admin"},
     new User() {Id = 0, Name = "Pavel"},
     new User() {Id = 1, Name = "Semen"},
     new User() {Id = 2, Name = "Igor"},
     new User() {Id = 3, Name = "Lia"},
     new User() {Id = 4, Name = "Simon"},
 };
+
+var admin = users.First(u => u.Id == 100);
 
 List<AccessFile> files = new()
 {
@@ -24,8 +22,7 @@ List<AccessFile> files = new()
     new AccessFile() {Name = "Program"},
 };
 
-var matrixFactory = new AccessMatrixFactory();
-var accessMatrix = matrixFactory.Create(admin, users, files);
+var factory = new AccessMatrixFactory();
+var app = new UI(admin, users, files, factory);
 
-
-Console.WriteLine(accessMatrix.CheckRight(users[0], files[0], Right.Read));
+app.Start();
