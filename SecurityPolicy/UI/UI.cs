@@ -75,8 +75,10 @@ public class UI
     {
         if (_user is null)
             return;
-        
+        Console.WriteLine("---------------");
         Console.WriteLine($"User {_user.Name}");
+        Console.WriteLine("---------------");
+
         foreach (var file in _files)
         {
             Console.Write($"{file.Name}: ");

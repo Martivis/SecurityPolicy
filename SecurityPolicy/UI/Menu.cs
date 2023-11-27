@@ -24,7 +24,7 @@ public class Menu : IMenu
     {
         Console.Write("Enter action name >> ");
         var answer = Console.ReadLine();
-        var result = _menu.FirstOrDefault(p => p.ToString() == answer);
+        var result = _menu.FirstOrDefault(p => p.ToString().StartsWith(answer));
         if (result is null)
         {
             Console.WriteLine($"No points with name {answer} were found");
